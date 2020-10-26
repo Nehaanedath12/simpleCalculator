@@ -1,15 +1,12 @@
 package com.example.calculator
 
 import android.annotation.SuppressLint
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
                 if((number1.text.toString()!="") &&(number2.text.toString()!="")) {
                     ans.text =
-                        "ANS :  " + (number1.text.toString().trim().toLong() + number2.text.toString().trim().toLong() ).toString()
+                        "ANS :  " + (number1.text.toString().trim().toDouble() + number2.text.toString().trim().toDouble() ).toString()
                     image.visibility=View.VISIBLE
                     image.text="+"
 
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             subtract.setOnClickListener {
                 if((number1.text.toString()!="")&&(number2.text.toString()!="")) {
                     ans.text =
-                        "ANS :  " + (number1.text.toString().trim().toLong() - number2.text.toString().trim().toLong()).toString()
+                        "ANS :  " + (number1.text.toString().trim().toDouble() - number2.text.toString().trim().toDouble()).toString()
                     image.visibility=View.VISIBLE
                     image.text="-"
 
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             divide.setOnClickListener {
                 if((number1.text.toString()!="")&&(number2.text.toString()!="")) {
                     ans.text =
-                        "ANS :  " + (number1.text.toString().trim().toLong() / number2.text.toString().trim().toLong()).toString()
+                        "ANS :  " + (number1.text.toString().trim().toDouble() / number2.text.toString().trim().toDouble()).toString()
                     image.visibility=View.VISIBLE
                     image.text="/"
 
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             multiple.setOnClickListener {
                 if((number1.text.toString()!="")&&(number2.text.toString()!="")) {
                     ans.text =
-                        "ANS : " + (number1.text.toString().trim().toLong() * number2.text.toString().trim().toLong()).toString()
+                        "ANS : " + (number1.text.toString().trim().toDouble() * number2.text.toString().trim().toDouble()).toString()
                     image.visibility=View.VISIBLE
                     image.text="*"
 
