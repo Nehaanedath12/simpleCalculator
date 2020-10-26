@@ -22,8 +22,13 @@ class MainActivity : AppCompatActivity() {
         val multiple=findViewById<View>(R.id.multiple)as TextView
         val ans=findViewById<View>(R.id.answer) as TextView
         val image=findViewById<View>(R.id.calc_I) as TextView
+        val clear=findViewById<View>(R.id.clear) as TextView
 
-
+        clear.setOnClickListener{
+            number1.setText("")
+            number2.setText("")
+            ans.text = ""
+        }
 
             add.setOnClickListener {
 

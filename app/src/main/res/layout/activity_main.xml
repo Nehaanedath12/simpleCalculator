@@ -58,11 +58,17 @@
         android:layout_marginRight="20dp"
         android:layout_height="50dp" />
 
-
+    <TextView
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLEAR ALL"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp" />
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_marginTop="50dp"
-        android:padding="10dp"
+        android:padding="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:layout_height="wrap_content">
     <GridLayout
@@ -72,7 +78,7 @@
         android:columnCount="2"
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false"
-        android:layout_weight="8">
+        android:layout_weight="4">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -159,52 +165,5 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
     </RelativeLayout>
-<!--    <LinearLayout-->
-<!--        android:padding="20dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--<Button-->
-<!--    android:id="@+id/add"-->
-<!--    android:layout_width="0dp"-->
-<!--    android:layout_weight="1"-->
-<!--    android:layout_marginRight="10dp"-->
-<!--    android:layout_gravity="center"-->
-<!--    android:text="add"-->
-<!--    android:layout_height="60dp"-->
-<!--    android:layout_marginEnd="10dp" />-->
-<!--    <Button-->
-<!--        android:id="@+id/subtract"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:text="subtract"-->
-<!--        android:layout_height="60dp"/>-->
-<!--    </LinearLayout>-->
-<!--    <LinearLayout-->
-<!--        android:padding="20dp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-<!--        <Button-->
-<!--            android:id="@+id/divide"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="divide"-->
-<!--            android:layout_height="60dp"/>-->
-<!--        <Button-->
-<!--            android:id="@+id/multiple"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:text="multiple"-->
-<!--            android:layout_height="60dp"/>-->
-<!--    </LinearLayout>-->
-
 
 </LinearLayout>
