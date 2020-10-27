@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
     <EditText
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:id="@+id/number1"
         android:layout_width="0dp"
         android:hint="0"
@@ -37,7 +37,7 @@
             android:layout_marginTop="40dp" />
 
         <EditText
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:id="@+id/number2"
             android:layout_width="0dp"
             android:layout_weight="1"
