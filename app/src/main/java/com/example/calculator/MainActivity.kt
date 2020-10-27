@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val number1=findViewById<View>(R.id.number1) as EditText
         val number2=findViewById<View>(R.id.number2) as EditText
-        val add=findViewById<View>(R.id.add) as TextView
-        val subtract=findViewById<View>(R.id.subtract) as TextView
-        val divide=findViewById<View>(R.id.divide)as TextView
-        val multiple=findViewById<View>(R.id.multiple)as TextView
+        val add=findViewById<View>(R.id.add) as CardView
+        val subtract=findViewById<View>(R.id.subtract) as CardView
+        val divide=findViewById<View>(R.id.divide)as CardView
+        val multiple=findViewById<View>(R.id.multiple)as CardView
         val ans=findViewById<View>(R.id.answer) as TextView
         val image=findViewById<View>(R.id.calc_I) as TextView
         val clear=findViewById<View>(R.id.clear) as TextView

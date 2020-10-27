@@ -18,6 +18,7 @@
         android:id="@+id/number1"
         android:layout_width="0dp"
         android:hint="0"
+        android:textSize="25dp"
         android:gravity="center"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:hint="0"
+            android:textSize="25dp"
             android:gravity="center"
             android:maxLength="15"
             android:layout_height="wrap_content"
@@ -55,7 +57,7 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="end|center_vertical"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
         android:layout_height="50dp" />
 
     <TextView
@@ -63,8 +65,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CLEAR ALL"
+        android:textColor="@color/black"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp" />
+        android:layout_marginLeft="50dp" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:padding="15dp"
@@ -81,6 +84,7 @@
         android:layout_weight="4">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/add"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -89,19 +93,19 @@
         android:layout_marginLeft="16dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
+        android:backgroundTint="@color/design_default_color_primary"
         android:layout_marginBottom="16dp"
         >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_gravity="center"/>
 
-        <TextView
-            android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary"
-            android:text="ADD"
-            android:textColor="@color/white"
-            android:gravity="center"/>
+
     </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/subtract"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -110,19 +114,18 @@
             android:layout_marginLeft="16dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp"
+            android:backgroundTint="@color/design_default_color_primary"
             android:layout_marginBottom="16dp"
             >
 
-            <TextView
-                android:id="@+id/subtract"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/design_default_color_primary"
-                android:text="SUBTRACT"
-                android:textColor="@color/white"
-                android:gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_subtract"
+                android:layout_gravity="center"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/divide"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -131,19 +134,18 @@
             android:layout_marginLeft="16dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp"
+            android:backgroundTint="@color/design_default_color_primary"
             android:layout_marginBottom="16dp"
             >
 
-            <TextView
-                android:id="@+id/divide"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/design_default_color_primary"
-                android:text="DIVIDE"
-                android:textColor="@color/white"
-                android:gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_divide" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/multiple"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -152,16 +154,14 @@
             android:layout_marginLeft="16dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp"
+            android:backgroundTint="@color/design_default_color_primary"
             android:layout_marginBottom="16dp"
             >
-            <TextView
-                android:id="@+id/multiple"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/design_default_color_primary"
-                android:text="MULTIPLE"
-                android:textColor="@color/white"
-                android:gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_multiple"
+                android:layout_gravity="center"/>
         </androidx.cardview.widget.CardView>
     </GridLayout>
     </RelativeLayout>
