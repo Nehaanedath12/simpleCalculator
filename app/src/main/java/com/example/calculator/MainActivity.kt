@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             number1.setText("")
             number2.setText("")
             ans.text = ""
+            image.visibility=View.GONE
         }
 
             add.setOnClickListener {
