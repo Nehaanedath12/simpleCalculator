@@ -6,6 +6,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/design_default_color_primary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Calculator"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Go to Map"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginLeft="200dp"
+            />
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.example.calculator
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
         val number1=findViewById<View>(R.id.number1) as EditText
         val number2=findViewById<View>(R.id.number2) as EditText
         val add=findViewById<View>(R.id.add) as CardView
@@ -25,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         val ans=findViewById<View>(R.id.answer) as TextView
         val image=findViewById<View>(R.id.calc_I) as TextView
         val clear=findViewById<View>(R.id.clear) as TextView
+        val mapText=findViewById<View>(R.id.map) as TextView
+
+        mapText.setOnClickListener{
+            intent= Intent(applicationContext,CurrentLocationActivity::class.java)
+            startActivity(intent)
+        }
 
         clear.setOnClickListener{
             number1.setText("")
