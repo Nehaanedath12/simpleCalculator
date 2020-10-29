@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -18,8 +17,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class CurrentLocationActivity : AppCompatActivity() {
 
-    lateinit var supportMapFragment: SupportMapFragment
-    lateinit var client:FusedLocationProviderClient
+    private lateinit  var supportMapFragment: SupportMapFragment
+    private lateinit var client:FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +29,10 @@ class CurrentLocationActivity : AppCompatActivity() {
         client = LocationServices.getFusedLocationProviderClient(this)
 
 
-        if(ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) !=PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 100)
+        if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) !=PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
         }
-        LoadMap()
+        loadMap()
 
     }
 
@@ -43,7 +42,7 @@ class CurrentLocationActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 101) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                LoadMap()
+                loadMap()
             } else {
                 Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show()
             }
@@ -52,7 +51,7 @@ class CurrentLocationActivity : AppCompatActivity() {
 
 
 
-    private fun LoadMap() {
+    private fun loadMap() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
