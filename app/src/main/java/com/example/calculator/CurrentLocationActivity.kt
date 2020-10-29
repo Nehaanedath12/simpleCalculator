@@ -54,14 +54,14 @@ class CurrentLocationActivity : AppCompatActivity() {
 
             loadMap()
 
-            zoomIn.setOnClickListener {
-                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
-                animLinear.startAnimation(animation)
-            }
-            zoomOut.setOnClickListener {
-                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_out)
-                animLinear.startAnimation(animation)
-            }
+//            zoomIn.setOnClickListener {
+//                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
+//                animLinear.startAnimation(animation)
+//            }
+//            zoomOut.setOnClickListener {
+//                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_out)
+//                animLinear.startAnimation(animation)
+//            }
         }
     }
 
@@ -70,7 +70,7 @@ class CurrentLocationActivity : AppCompatActivity() {
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 100) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults[0]== PackageManager.PERMISSION_GRANTED) {
                 loadMap()
             } else {
                 Toast.makeText(this, "want permission", Toast.LENGTH_SHORT).show()
