@@ -6,6 +6,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.io.IOException
+import java.util.*
 
 class CurrentLocationActivity : AppCompatActivity() {
 
@@ -28,7 +30,7 @@ class CurrentLocationActivity : AppCompatActivity() {
     private lateinit var go: TextView
     private lateinit var search:EditText
     private lateinit var mMap:GoogleMap
-    var list: List<Address>?=null
+    private lateinit var list: List<Address>
     private lateinit var animLinear:LinearLayout
 
 
@@ -42,21 +44,24 @@ class CurrentLocationActivity : AppCompatActivity() {
         val zoomOut:ImageView=findViewById(R.id.zoomOut)
         animLinear=findViewById(R.id.animLinear)
 
+        list = ArrayList()
+
         supportMapFragment= (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)!!
         client = LocationServices.getFusedLocationProviderClient(this)
         if(ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) !=PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
-        }
+        }else {
 
             loadMap()
 
-        zoomIn.setOnClickListener{
-            val animation:Animation=AnimationUtils.loadAnimation(this,R.anim.zoom_in)
-            animLinear.startAnimation(animation)
-        }
-        zoomOut.setOnClickListener{
-            val animation:Animation=AnimationUtils.loadAnimation(this,R.anim.zoom_out)
-            animLinear.startAnimation(animation)
+            zoomIn.setOnClickListener {
+                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
+                animLinear.startAnimation(animation)
+            }
+            zoomOut.setOnClickListener {
+                val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.zoom_out)
+                animLinear.startAnimation(animation)
+            }
         }
     }
 
@@ -87,9 +92,12 @@ class CurrentLocationActivity : AppCompatActivity() {
         {
             val task=client.lastLocation
             task.addOnSuccessListener { location: Location? ->
+                Log.d("locationn",location.toString())
+
                 if (location!=null){
                     supportMapFragment.getMapAsync(OnMapReadyCallback { googleMap ->
                         mMap= googleMap
+                        Log.d("locationn",location.toString())
                         val latLng=LatLng(location.latitude,location.longitude)
                         val markerOptions=MarkerOptions().position(latLng)
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10f))
@@ -97,26 +105,30 @@ class CurrentLocationActivity : AppCompatActivity() {
                     })
                 }
             }
-            go.setOnClickListener{
-                val geocode:Geocoder?= Geocoder(this)
-                val location:String?= search.text.toString()
-                if (location != null) {
-                    try {
-                        list= geocode?.getFromLocationName(location,1)
-                    }catch (e:IOException){e.printStackTrace()}
+                go.setOnClickListener {
+                    val geocode: Geocoder? = Geocoder(this)
+                    val location: String? = search.text.toString()
+                    if (location != null) {
+                        try {
+                            if (geocode != null) {
+                                list = geocode.getFromLocationName(location, 1)
+                            }
+                        } catch (e: IOException) {
+                            e.printStackTrace()
+                        }
 
 
+                    }
+                    if (list!=null && location!=null && list!!.size>0) {
+                        val address: Address = list!!.get(0)
+                        val latLng: LatLng? = LatLng(address.latitude, address.longitude)
+                        val markerOptions = MarkerOptions().position(latLng!!)
+                        mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                        mMap?.addMarker(markerOptions)
+                    } else {
+                        Toast.makeText(this, "Enter valid place!!!", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                if (!list.isNullOrEmpty()){
-                    val address:Address= list!!.get(0)
-                    val latLng:LatLng?=LatLng(address.latitude,address.longitude)
-                    val markerOptions=MarkerOptions().position(latLng!!)
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10f))
-                    mMap.addMarker(markerOptions)
-                } else{
-                    Toast.makeText(this,"Enter valid place!!!",Toast.LENGTH_SHORT).show()
-                }
-            }
         }
     }
     }
