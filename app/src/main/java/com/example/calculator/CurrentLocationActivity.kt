@@ -88,16 +88,13 @@ class CurrentLocationActivity : AppCompatActivity() {
         {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
         }
-        else
-        {
+        else {
             val task=client.lastLocation
             task.addOnSuccessListener { location: Location? ->
-                Log.d("locationn",location.toString())
 
                 if (location!=null){
                     supportMapFragment.getMapAsync(OnMapReadyCallback { googleMap ->
                         gMap = googleMap
-                        Log.d("locationn",location.toString())
                         val latLng=LatLng(location.latitude,location.longitude)
                         val markerOptions=MarkerOptions().position(latLng)
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10f))
