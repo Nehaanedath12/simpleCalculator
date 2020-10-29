@@ -29,7 +29,7 @@ class CurrentLocationActivity : AppCompatActivity() {
     private lateinit var client:FusedLocationProviderClient
     private lateinit var go: TextView
     private lateinit var search:EditText
-    private lateinit var mMap:GoogleMap
+    var  gMap: GoogleMap? = null
     private lateinit var list: List<Address>
     private lateinit var animLinear:LinearLayout
 
@@ -96,7 +96,7 @@ class CurrentLocationActivity : AppCompatActivity() {
 
                 if (location!=null){
                     supportMapFragment.getMapAsync(OnMapReadyCallback { googleMap ->
-                        mMap= googleMap
+                        gMap = googleMap
                         Log.d("locationn",location.toString())
                         val latLng=LatLng(location.latitude,location.longitude)
                         val markerOptions=MarkerOptions().position(latLng)
@@ -123,8 +123,8 @@ class CurrentLocationActivity : AppCompatActivity() {
                         val address: Address = list!!.get(0)
                         val latLng: LatLng? = LatLng(address.latitude, address.longitude)
                         val markerOptions = MarkerOptions().position(latLng!!)
-                        mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-                        mMap?.addMarker(markerOptions)
+                        gMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                        gMap?.addMarker(markerOptions)
                     } else {
                         Toast.makeText(this, "Enter valid place!!!", Toast.LENGTH_SHORT).show()
                     }
